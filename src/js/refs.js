@@ -4,4 +4,4 @@ export default class refs {
     this.loadMoreBtn = document.querySelector('.load-more');
     this.gallery = document.querySelector('.gallery');
   }
-}
+};

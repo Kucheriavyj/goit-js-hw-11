@@ -10,4 +10,4 @@ export default function getCurrentImagesInfo(images) {
       downloads: image.downloads,
     };
   });
-}
+};

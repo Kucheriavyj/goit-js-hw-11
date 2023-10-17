@@ -1,5 +1,5 @@
 import Refs from './refs';
-//import markupImages from './templates/pfotoCards.hbs';
+
 import markupSimpleLightBox from './templates/simpleLb.hbs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import simpleLightbox from 'simplelightbox';
@@ -9,7 +9,6 @@ const refs = new Refs();
 export function createMarkup(data) {
   const { images, totalHits, page, perPage } = data;
 
-  /* refs.gallery.insertAdjacentHTML('beforeend', markupImages(images)); */
   refs.gallery.insertAdjacentHTML('beforeend', markupSimpleLightBox(images));
 
   let gallery = new simpleLightbox('.gallery a', {
@@ -22,15 +21,15 @@ export function createMarkup(data) {
 
   coolScroll(page);
   alarmNotifications(totalHits, page, perPage);
-}
+};
 
 export function clearMarkup() {
   refs.gallery.innerHTML = '';
-}
+};
 
 function isNotEnd(totalHits, page, perPage) {
   return totalHits > page * perPage;
-}
+};
 
 function alarmNotifications(totalHits, page, perPage) {
   if (page === 1) {
@@ -40,7 +39,7 @@ function alarmNotifications(totalHits, page, perPage) {
     Notify.info("We're sorry, but you've reached the end of search results.");
     refs.loadMoreBtn.setAttribute('disabled', 'true');
   }
-}
+};
 
 function coolScroll(page) {
   if (page > 1) {
@@ -53,4 +52,4 @@ function coolScroll(page) {
       behavior: 'smooth',
     });
   }
-}
+};
